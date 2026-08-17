@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Tech | لصيانة وإكسسوارات الكمبيوتر واللابتوب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #151c2e;
+            --primary: #00d2ff;
+            --primary-glow: rgba(0, 210, 255, 0.3);
+            --accent: #3a7bd5;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, #00d2ff, #92fe9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin: 70px 0 40px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -8px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-50px);
+        }
+
+        .product-img {
+            height: 90px;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 50px;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 16px;
+            margin: 8px 0;
+            font-weight: 600;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .order-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .order-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            background: #070a10;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid #151c2e;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo"><i class="fa-solid fa-microchip"></i> Master <span>Tech</span></a>
+            <ul class="nav-links">
+                <li><a href="#services">خدمات الصيانة</a></li>
+                <li><a href="#accessories">الإكسسوارات</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            <a href="https://wa.me/201020349049" target="_blank" class="btn"><i class="fa-brands fa-whatsapp"></i> احجز صيانة</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <h1>وجهتك الأولى لصيانة وتطوير <br><span>أجهزة الكمبيوتر واللابتوب</span></h1>
+        <p>فحص دقيق، قطع غيار موثوقة، وأحدث إكسسوارات الأجهزة المكتبية والمحمولة بأفضل الأسعار.</p>
+        <a href="#accessories" class="btn">استكشف الإكسسوارات</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container" id="services">
+        <div class="section-title">
+            <h2>خدمات الصيانة والترقية</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-laptop-medical"></i>
+                <h3>صيانة اللابتوب</h3>
+                <p>تغيير الشاشات، البطاريات، الكيبورد، صيانة مشاكل الباور والشحن والتبريد الداخلي.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-desktop"></i>
+                <h3>تجميع وترقية PC</h3>
+                <p>تجميع أجهزة مخصصة للألعاب والعمل، ترقية الرامات، وحدات التخزين SSD، وكروت الشاشة.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-compact-disc"></i>
+                <h3>السوفت وير والأنظمة</h3>
+                <p>تثبيت الويندوز والبرامج الأصلية، إزالة الفيروسات، وحلول استعادة البيانات المفقودة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories Section -->
+    <section class="container" id="accessories">
+        <div class="section-title">
+            <h2>أحدث الإكسسوارات المتاحة</h2>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img"><img src="mouse 2023.JPG" alt="mouse 2023"><i class="fa-solid fa-mouse"></i></div>
+                <div class="product-info">
+                    <span class="product-category">إكسسوارات PC</span>
+                    <h4 class="product-title">ماوس ألعاب RGB عالي الدقة</h4>
+                    <div class="product-bottom">
+                        
+                        <span class="price">350 ج.م</span>
+                        <a href="https://wa.me/201020349049?text=مهتم_بشراء_ماوس_ألعاب" target="_blank" class="order-btn">طلب الآن</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img"><img src="download (4).JPG" alt="download (4)"><i class="fa-solid fa-keyboard"></i></div>
+                <div class="product-info">
+                    <span class="product-category">إكسسوارات PC</span>
+                    <h4 class="product-title">لوحة مفاتيح ميكانيكية بإضاءة</h4>
+                    <div class="product-bottom">
+                        <span class="price">750 ج.م</span>
+                        <a href="https://wa.me/201020349049?text=مهتم_بشراء_كيبورد_ميكانيكي" target="_blank" class="order-btn">طلب الآن</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-fan"></i></div>
+                <div class="product-info">
+                    <span class="product-category">إكسسوارات لابتوب</span>
+                    <h4 class="product-title">قاعدة تبريد لابتوب مزودة بمروحتين</h4>
+                    <div class="product-bottom">
+                        <span class="price">400 ج.م</span>
+                        <a href="https://wa.me/201020349049?text=مهتم_بشراء_قاعدة_تبريد" target="_blank" class="order-btn">طلب الآن</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img"><img src="download (5).JPG" alt="download (5)"><i class="fa-solid fa-headphones"></i></div>
+                <div class="product-info">
+                    <span class="product-category">صوتيات</span>
+                    <h4 class="product-title">سماعة رأس محيطية للألعاب</h4>
+                    <div class="product-bottom">
+                        <span class="price">500 ج.م</span>
+                        <a href="https://wa.me/201020349049?text=مهتم_بشراء_سماعة_ألعاب" target="_blank" class="order-btn">طلب الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>01020349049</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span> المنوفية - منوف - سنجرج</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>يومياً من 5 عصرا إلى 12مساءً</span>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2026 لـ Master Tech</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
